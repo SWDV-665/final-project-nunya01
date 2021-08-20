@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ItemService } from '../item.service';
+import { ItemService } from '../shared/item.service';
 
 @Component({
   selector: 'app-home',
@@ -8,16 +8,28 @@ import { ItemService } from '../item.service';
 })
 export class HomePage implements OnInit {
 
-  items = []
+  Items: any = [];
 
-  constructor(public dataService: ItemService) { }
+  constructor(private itemService: ItemService) { }
 
   ngOnInit() {
-    this.loadItems();
   }
 
-  loadItems() {
-    this.items = this.dataService.getItems()
+  ionViewDidEnter() {
+    this.itemService.getItemList().subscribe((res) => {
+      console.log(res)
+      this.Items = res;
+    })
   }
 
+  deleteItem(item, i) {
+    if (window.confirm('Do you want to delete this item?')) {
+      this.itemService.deleteItem(item._id)
+        .subscribe(() => {
+          this.Items.splice(i, 1);
+          console.log('Item deleted!')
+        }
+        )
+    }
+  }
 }
