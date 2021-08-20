@@ -1,9 +1,55 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Add</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Item</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <form [formGroup]="itemForm" (ngSubmit)="onFormSubmit()">
+      <ion-item>
+        <ion-label position="floating">Appliance Name</ion-label>
+        <ion-input formControlName="appliance_name" type="text" required></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <ion-label position="floating">Part Name</ion-label>
+        <ion-input formControlName="part_name" type="text" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Part Number</ion-label>
+        <ion-input formControlName="part_number" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Part Description</ion-label>
+        <ion-input formControlName="part_descr" type="text" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Additional Notes</ion-label>
+        <ion-input formControlName="addtl_notes" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Replacement Interval (days)</ion-label>
+        <ion-input formControlName="replc_interval" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Last Replaced Date</ion-label>
+        <ion-input formControlName="last_replc_date" type="text"></ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="primary" shape="full" expand="block">Add Item</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-list>
 </ion-content>
