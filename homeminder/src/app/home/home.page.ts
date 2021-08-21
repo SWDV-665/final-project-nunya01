@@ -15,6 +15,7 @@ export class HomePage implements OnInit {
   ngOnInit() {
   }
 
+  // Refresh content on change.
   ionViewDidEnter() {
     this.itemService.getItemList().subscribe((res) => {
       console.log(res)

@@ -32,13 +32,13 @@ export class ItemService {
   getItemList(): Observable<Item[]> {
     return this.http.get<Item[]>('http://localhost:3000/api')
       .pipe(
-        tap(songs => console.log('Items fetched!')),
+        tap(items => console.log('Items fetched!')),
         catchError(this.handleError<Item[]>('Get Items', []))
       );
   }
 
-  updateItem(id, song: Item): Observable<any> {
-    return this.http.put('http://localhost:3000/api/update-item/' + id, song, this.httpOptions)
+  updateItem(id, item: Item): Observable<any> {
+    return this.http.put('http://localhost:3000/api/update-item/' + id, item, this.httpOptions)
       .pipe(
         tap(_ => console.log(`Item updated: ${id}`)),
         catchError(this.handleError<Item[]>('Update Item'))
