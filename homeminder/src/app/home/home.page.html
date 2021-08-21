@@ -8,21 +8,26 @@
   <ion-list>
     <ion-card *ngFor="let item of Items, let i = index;">
       <ion-card-header>
+        
         <ion-card-title>{{ item.appliance_name }}</ion-card-title>
         <ion-card-subtitle>Part Name: {{ item.part_name }}</ion-card-subtitle>
+
+        <div class="center-right">
+          <button ion-button clear [routerLink]="['/edit/', item._id]">
+            <ion-icon name="create" style="zoom:2.0"></ion-icon>
+          </button>
+          <button ion-button clear (click)="deleteItem(item, i)">
+            <ion-icon name="trash" style="zoom:2.0"></ion-icon>
+          </button>
+        </div>
+
       </ion-card-header>
-  
+
       <ion-card-content>
         Description: {{ item.part_descr }}<br>
         Additional Notes: {{ item.addtl_notes }}<br>
         Replacement Interval (days): {{ item.replc_interval }}<br>
         Last Replaced: {{ item.last_replc_date }}<br>
-        <button ion-button clear [routerLink]="['/edit/', item._id]">
-          <ion-icon name="create" style="zoom:2.0"></ion-icon>
-        </button>
-        <button ion-button clear (click)="deleteItem(item, i)">
-          <ion-icon name="trash" style="zoom:2.0"></ion-icon>
-        </button>
       </ion-card-content>
     </ion-card>
   </ion-list>
