@@ -8,7 +8,7 @@
   <ion-list>
     <ion-card *ngFor="let item of Items, let i = index;">
       <ion-card-header>
-        
+
         <ion-card-title>{{ item.appliance_name }}</ion-card-title>
         <ion-card-subtitle>Part Name: {{ item.part_name }}</ion-card-subtitle>
 
@@ -24,10 +24,11 @@
       </ion-card-header>
 
       <ion-card-content>
+        Part Number: {{ item.part_number }}<br>
         Description: {{ item.part_descr }}<br>
         Additional Notes: {{ item.addtl_notes }}<br>
         Replacement Interval (days): {{ item.replc_interval }}<br>
-        Last Replaced: {{ item.last_replc_date }}<br>
+        Last Replaced: {{ getCleanDate(item) }}<br>
       </ion-card-content>
     </ion-card>
   </ion-list>
